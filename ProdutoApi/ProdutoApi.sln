@@ -36,6 +36,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "src\Api\Api\Api.cspr
 		{D3507443-F5FE-4392-95B7-AD32272B84FE} = {D3507443-F5FE-4392-95B7-AD32272B84FE}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker", "docker", "{DA056A81-1436-4F5C-8D8C-EE558E03776C}"
+	ProjectSection(SolutionItems) = preProject
+		docker\docker-compose-local.yml = docker\docker-compose-local.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

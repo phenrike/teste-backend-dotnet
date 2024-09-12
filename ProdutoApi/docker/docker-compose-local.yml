@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: produto_api_postgres 
+    environment:
+      POSTGRES_USER: devuser 
+      POSTGRES_PASSWORD: devpassword 
+      POSTGRES_DB: produto_db 
+    ports:
+      - "5432:5432" 
+    volumes:
+      - postgres_data:/var/lib/postgresql/data 
+    networks:
+      - produto_api_network
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+        - "6379:6379"
+    volumes:
+        - redis-data:/data
+    command: ["redis-server", "--appendonly", "yes"]
+
+volumes:
+  postgres_data:
+  redis-data:
+
+networks:
+  produto_api_network:
+    driver: bridge
