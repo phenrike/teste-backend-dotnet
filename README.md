@@ -1,8 +1,7 @@
 # Desafio Técnico: Desenvolvimento de API RESTful com ASP.NET 8
 
-## ProdutoApi
-### Descrição
-O ProdutoApi é uma API RESTful desenvolvida com ASP.NET Core que segue a arquitetura Clean Architecture. O objetivo é fornecer uma interface para gerenciar produtos, incluindo operações de CRUD e conversão de preços entre moedas.
+## Descrição
+O ProdutoApi é uma API RESTful desenvolvida com ASP.NET Core que segue o conceito Clean Architecture. O objetivo é fornecer uma interface para gerenciar produtos, incluindo operações de CRUD e conversão de preços entre moedas.
 
 ## Arquitetura
 
@@ -85,8 +84,8 @@ Resposta: 204 No Content se bem-sucedido.
 - [x] Arquitetura Limpa (Clean Architecture): O projeto deve seguir os princípios da Clean Architecture, separando camadas de domínio, aplicação, infraestrutura e interfaces de forma clara.
 - [x] Design Orientado a Domínio (DDD): O domínio deve ser modelado seguindo os conceitos de DDD, com agregados, entidades e repositórios devidamente definidos.
 - [x] Boas Práticas de SOLID: O código deve respeitar os princípios SOLID, com separação de responsabilidades, uso adequado de injeção de dependências e padrões de design apropriados.
-- [x] Testes Unitários (TDD): A aplicação deve ser construída com a abordagem de TDD, utilizando xUnit para cobrir as funcionalidades principais e integração com a API externa.
-- [ ] Testes de Integração (TDD): A aplicação deve ser construída com a abordagem de TDD, utilizando xUnit para cobrir as funcionalidades principais e integração com a API externa.
+- [x] Testes Unitários (TDD): A aplicação deve ser construída com a abordagem de TDD, utilizando xUnit para cobrir as funcionalidades principais.
+- [ ] Testes de Integração (TDD): A aplicação deve ser construída com a abordagem de TDD, utilizando xUnit para cobrir a integração com a API externa.
 - [ ] Segurança: A API deve seguir boas práticas de segurança, como autenticação/autorização (OAuth2 ou JWT).
 - [x] Boas Práticas REST: A API deve seguir boas práticas como versionamento de API e tratamento adequado de erros.
 - [ ] Monitoramento e Observabilidade: Implementar logging, monitoramento e rastreamento (Tracing) usando ferramentas como Serilog e OpenTelemetry.
