@@ -21,7 +21,7 @@ jobs:
       - name: Publicando a API
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp ProdutoApi/src/Api/Api/Api.csproj
       - name: Upload de artefato para deploy
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
