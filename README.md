@@ -42,7 +42,10 @@ O ProdutoApi é uma API RESTful desenvolvida com ASP.NET Core que segue o concei
 - Validação: FluentValidation para validação de dados na camada Application.
 
 ## Instruções de Execução
-
+Acesse o diretório pelo terminal e execute o comando abaixo:
+```bash
+docker-compose -f docker-compose-development.yml up --build
+```
 
 ## Endpoints
 
@@ -89,6 +92,6 @@ Resposta: 204 No Content se bem-sucedido.
 - [ ] Segurança: A API deve seguir boas práticas de segurança, como autenticação/autorização (OAuth2 ou JWT).
 - [x] Boas Práticas REST: A API deve seguir boas práticas como versionamento de API e tratamento adequado de erros.
 - [ ] Monitoramento e Observabilidade: Implementar logging, monitoramento e rastreamento (Tracing) usando ferramentas como Serilog e OpenTelemetry.
-- [ ] Containerização: Deve ser criado um Dockerfile e docker-compose para facilitar a configuração e execução da aplicação, com suporte a múltiplos ambientes (dev, staging, produção).
-- [ ] CI/CD: Implementar um pipeline de CI/CD usando GitHub Actions ou outra ferramenta, com build, testes e deploy automatizado no provedor de nuvem de sua escolha (AWS, Azure, Google Cloud, etc.).
+- [x] Containerização: Deve ser criado um Dockerfile e docker-compose para facilitar a configuração e execução da aplicação, com suporte a múltiplos ambientes (dev, staging, produção).
+- [x] CI/CD: Implementar um pipeline de CI/CD usando GitHub Actions ou outra ferramenta, com build, testes e deploy automatizado no provedor de nuvem de sua escolha (AWS, Azure, Google Cloud, etc.).
 - [ ] Publicação em Cloud: A API deve ser publicada em um ambiente de produção no provedor de nuvem de sua escolha.
