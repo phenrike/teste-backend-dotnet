@@ -42,7 +42,7 @@ O ProdutoApi é uma API RESTful desenvolvida com ASP.NET Core que segue o concei
 - Validação: FluentValidation para validação de dados na camada Application.
 
 ## Instruções de Execução
-Acesse o diretório pelo terminal e execute o comando abaixo:
+Acesse o diretório "ProdutoApi/docker" pelo terminal e execute o comando abaixo:
 ```bash
 docker-compose -f docker-compose-development.yml up --build
 ```
