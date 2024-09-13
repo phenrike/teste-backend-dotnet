@@ -6,6 +6,9 @@ jobs:
   build:
     name: Pipeline de CI/CD
     runs-on: ubuntu-latest
+    env:
+      ConnectionStrings__ProdutoConnection: ${{ secrets.CONNECTION_STRING }}
+      ConnectionStrings__RedisConnection: ${{ secrets.REDIS_CONNECTION }}
     steps:
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
@@ -16,4 +19,25 @@ jobs:
       - name: Execução do Teste de Unidade
         run: dotnet test ProdutoApi/src/Tests/Tests/Tests.csproj
       - name: Publicando a API
-        run: dotnet publish ProdutoApi/src/Api/Api/Api.csproj
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp ProdutoApi/src/Api/Api/Api.csproj
+  deploy:
+      runs-on: ubuntu-latest
+      needs: build
+      environment:
+        name: 'Production'
+        url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      
+      steps:
+        - name: Download artifact from build job
+          uses: actions/download-artifact@v4
+          with:
+            name: .net-app
+        
+        - name: Deploy to Azure Web App
+          id: deploy-to-webapp
+          uses: azure/webapps-deploy@v3
+          with:
+            app-name: 'produtos-api'
+            slot-name: 'Production'
+            package: .
+            publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_736F8BDC89A048C59C9BBC101CE46B73 }}
