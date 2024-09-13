@@ -16,9 +16,18 @@ public static class InfraDependencyInjection
     {
         services.AddDbContext<ProdutoDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("ProdutoConnection")));
 
+        using (var scope = services.BuildServiceProvider().CreateScope())
+        {
+            var dbContext = scope.ServiceProvider.GetRequiredService<ProdutoDbContext>();
+            dbContext.Database.Migrate();
+        }
+
         services.AddScoped<IProdutoRepository, ProdutoRepository>();
 
-        services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(configuration.GetConnectionString("RedisConnection")!));
+        var redisConnectionString = configuration.GetConnectionString("RedisConnection");
+        var redis = ConnectionMultiplexer.Connect(redisConnectionString);
+
+        services.AddSingleton<IConnectionMultiplexer>(redis);
         services.AddSingleton<ICacheService, RedisCacheService>();
 
         services.AddScoped<IApiFixerService>(provider =>

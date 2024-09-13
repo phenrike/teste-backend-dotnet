@@ -12,14 +12,32 @@ services:
       - postgres_data:/var/lib/postgresql/data 
     networks:
       - produto_api_network
+
   redis:
     image: redis
     container_name: redis
     ports:
-        - "6379:6379"
+      - "6379:6379"
     volumes:
-        - redis-data:/data
+      - redis-data:/data
     command: ["redis-server", "--appendonly", "yes"]
+
+  api:
+    build:
+        context: ../src
+        dockerfile: ./Api/Api/Dockerfile
+    container_name: produto_api
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__ProdutoConnection: "Host=produto_api_postgres;Database=produto_db;Username=devuser;Password=devpassword"
+      ConnectionStrings__RedisConnection: "redis:6379"
+    ports:
+      - "5000:80"
+    networks:
+      - produto_api_network
+    depends_on:
+      - postgres
+      - redis
 
 volumes:
   postgres_data:

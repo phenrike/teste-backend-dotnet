@@ -14,7 +14,6 @@ public static class ApplicationDependencyInjection
 {
     public static IServiceCollection AddAplication(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(configuration.GetConnectionString("RedisConnection")!));
         services.AddSingleton<ICacheService, RedisCacheService>();
 
         services.AddTransient<IValidator<Produto>, ProdutoValidator>();
